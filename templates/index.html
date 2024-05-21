@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Todo List - Home</title>{% endblock %}
+
+{% block content %}
+<h1>Todo List</h1>
+<a href="{% url 'list:add_task' %}" class="btn btn-primary mb-3">Add New Task</a>
+<ul class="list-group">
+    {% for task in tasks %}
+        <li class="list-group-item">
+            {{ task.content }} - {{ task.created_at }} - {{ task.deadline }} - {{ task.is_done }}
+            <a href="{% url 'list:task_update' task.id %}" class="btn btn-secondary btn-sm">Update</a>
+            <a href="{% url 'list:task_delete' task.id %}" class="btn btn-danger btn-sm">Delete</a>
+            {% if not task.is_done %}
+                <a href="{% url 'list:toggle_status' task.id %}" class="btn btn-success btn-sm">Complete</a>
+            {% else %}
+                <a href="{% url 'list:toggle_status' task.id %}" class="btn btn-warning btn-sm">Undo</a>
+            {% endif %}
+            <ul>
+                {% for tag in task.tags.all %}
+                    <li>{{ tag.name }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
