@@ -12,8 +12,9 @@
             <th>Actions</th>
         </tr>
     </thead>
-    <tbody>
-        {% for tag in tags %}
+   {% if tag_list %}
+   	<tbody>
+        {% for tag in tag_list %}
             <tr>
                 <td>{{ tag.name }}</td>
                 <td>
@@ -23,5 +24,6 @@
             </tr>
         {% endfor %}
     </tbody>
+   {% endif %}
 </table>
 {% endblock %}
