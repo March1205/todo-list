@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-
+from list.forms import TagForm, TaskForm
 from list.models import Task, Tag
 
 
