@@ -1,12 +1,16 @@
 {% extends "list/base.html" %}
 {% load crispy_forms_filters %}
 
+{% block title %}
+    <title>Todo List - {{ object.pk|yesno:"Update,Create" }} Task</title>
+{% endblock %}
+
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} task</h1>
+  <h1>{{ object.pk|yesno:"Update,Create" }} task</h1>
   <form action="" method="post" novalidate>
     {% csrf_token %}
     {{ form|crispy }}
-
     <input type="submit" value="Submit" class="btn btn-primary">
+    <a href="{% url 'list:index' %}" class="btn btn-secondary">Cancel</a>
   </form>
 {% endblock %}
