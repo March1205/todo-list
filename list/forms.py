@@ -3,9 +3,10 @@ from list.models import Task, Tag
 
 
 class TaskForm(forms.ModelForm):
-    deadline = forms.DateField(widget=forms.DateInput(
-        attrs={"type": "date"}
-    ))
+    deadline = forms.DateTimeField(
+        widget=forms.DateTimeInput(attrs={"type": "datetime-local"}),
+        input_formats=['%d.%m.%Y %H:%M']
+    )
 
     class Meta:
         model = Task
