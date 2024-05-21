@@ -6,7 +6,7 @@ from list.models import Task, Tag
 
 
 def index(request):
-    tasks = Task.objects.all().order_by("is_done")
+    tasks = Task.objects.all().order_by("is_done", "-created_at")
     return render(request, "list/index.html", {"tasks": tasks})
 
 
