@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Todo List - Delete Task</title>{% endblock %}
+
+{% block content %}
+<h1>Delete Task</h1>
+<p>Are you sure you want to delete the task "{{ task.content }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete Task</button>
+</form>
+{% endblock %}
