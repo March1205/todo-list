@@ -55,4 +55,4 @@ class TaskToggleStatusView(generic.RedirectView):
         task = Task.objects.get(pk=self.kwargs["pk"])
         task.is_done = not task.is_done
         task.save()
-        return super().get_redirect_url(*args, **kwargs)
+        return reverse_lazy("list:index")
